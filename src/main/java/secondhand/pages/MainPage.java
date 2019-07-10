@@ -63,13 +63,97 @@ public class MainPage {
     @FindBy(id = "layered_id_attribute_group_3")
     private WebElement sizeLcheckbox;
 //////////////////////////////////////////////////////
-    @FindBy(xpath = "//*[@id=\"center_column\"]/ul/li/div/div/div[3]/div/div[2]/a[1]/span")
-    private WebElement addCart;
+    @FindBy(xpath = "//*[@id='center_column']/ul/li/div/div/div[3]/div/div[2]/a[1]/span")
+    private WebElement tShirtCart;
 
-    public MainPage addCartYo(){
-        addCart.click();
+    public MainPage addCartClick() {
+        tShirtCart.click();
         return this;
     }
+
+    @FindBy(xpath = "//*[@id='layer_cart']/div[1]/div[2]/div[4]/a/span")
+    private WebElement tProceedtoCheckout;
+
+    public MainPage proceedtoCheckoutClick() {
+        tProceedtoCheckout.click();
+        return this;
+    }
+
+    /*@FindBy(xpath = "//*[@id='cart_quantity_up_2_7_0_0']/span/i")
+    private WebElement tProceedtoPlus;
+
+    public MainPage plusClick() {
+        tProceedtoPlus.click();
+        return this;
+    }*/
+
+    @FindBy(xpath = "//*[@id='total_product']")
+    private WebElement tTotalProducts;
+
+    public MainPage pTotalProducts() {
+        tTotalProducts.click();
+        return this;
+    }
+
+    @FindBy(xpath = "//*[@id='total_shipping']")
+    private WebElement tTotalShipping;
+
+    public MainPage pTotalShipping() {
+        tTotalShipping.click();
+        return this;
+    }
+
+    @FindBy(xpath = "//*[@id='total_price_without_tax']")
+    private WebElement tTotalSumm;
+
+    public MainPage pTotalSumm() {
+        tTotalSumm.click();
+        return this;
+    }
+
+/*
+    @FindBy(xpath = "//*[@id='total_tax")
+    private WebElement tTotalTaxSumm;
+
+    public MainPage pTotalTax() {
+        tTotalTaxSumm.click();
+        return this;
+    }
+*/
+
+    @FindBy(xpath = "//*[@id='total_price']")
+    private WebElement tTotalFinishSumm;
+
+    public MainPage pTotalFinish() {
+        tTotalFinishSumm.click();
+        return this;
+    }
+
+    @FindBy(xpath = "//*[@id='2_7_0_0']/i")
+    private WebElement tIconTrashBasket;
+
+    public MainPage pIconTrash() {
+        tIconTrashBasket.click();
+        return this;
+    }
+
+    /*@FindBy(xpath = "#center_column p.alert-warning")
+    private WebElement tIconTrashBasketEmpty;
+
+    public MainPage pIconTrashEmpty() {
+        tIconTrashBasketEmpty.click();
+        return this;
+    }
+
+    public boolean isPresent(By isRegister) {
+        return this.driver.findElement(isRegister).isEnabled();
+    }*/
+
+
+
+
+
+
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
