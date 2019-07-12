@@ -64,6 +64,7 @@ public class MainPage {
     @FindBy(id = "layered_id_attribute_group_3")
     private WebElement sizeLcheckbox;
 //////////////////////////////////////////////////////
+
     @FindBy(xpath = "//*[@id='center_column']/ul/li/div/div/div[3]/div/div[2]/a[1]/span")
     private WebElement tShirtCart;
 
@@ -137,15 +138,13 @@ public class MainPage {
     @FindBy(css = "#center_column p.alert-warning")
     private WebElement tIconTrashBasketEmpty;
 
-    public MainPage pIconTrashEmpty() {
-        tIconTrashBasketEmpty.click();
-        return this;
+    public String pIconTrashEmpty() {
+        return tIconTrashBasketEmpty.getText();
     }
 
     public boolean isPresent(By isRegister) {
         return this.driver.findElement(isRegister).isEnabled();
     }
-
 
 
 
@@ -206,7 +205,7 @@ public class MainPage {
         return totalSum.getText();
     }
 
-    public void enterSomeBody_andClick(String someone, By firstForm) {
+    public void enterSomeBody_andClick(String someone) {
 
         formSearch.sendKeys(someone);
         search.click();
@@ -214,30 +213,34 @@ public class MainPage {
 
     }
 
-    public void appearElement( final WebElement element){
+    public void appearElement( final WebElement element, final String exp){
         Wait wait = new WebDriverWait(this.driver, 25)
                 .ignoring(NoSuchElementException.class);
         wait.until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver driver) {
-                //System.out.println("apply wait "+element.getText() );
-                return element.getText().equals("$54.00");
+               // System.out.println("apply wait "+exp );
+                return element.getText().equals(exp);
             }
             public String toString() {      return null;            }
         });
     }
 
-    public List getAllTotals(List actual) {
-        appearElement(tTotalProducts);
-        actual.add(getSummary(tTotalProducts));
-        actual.add(getSummary(tTotalShipping));
-        actual.add(getSummary(tTotalSumm));
-        actual.add(getSummary(tTotalTaxSumm));
-        actual.add(getSummary(tTotalFinishSumm));
-        return actual;
+    public List getAllTotals(List list) {
+        appearElement(tTotalProducts, "$54.00");
+        list.add(getSummary(tTotalProducts));
+        list.add(getSummary(tTotalShipping));
+        list.add(getSummary(tTotalSumm));
+        list.add(getSummary(tTotalTaxSumm));
+        list.add(getSummary(tTotalFinishSumm));
+        pIconTrash(); //icon-trash
+        appearElement(tIconTrashBasketEmpty, "Your shopping cart is empty.");
+        list.add(getSummary(tIconTrashBasketEmpty));
+        return list;
     }
 
     private String getSummary(WebElement webElement) {
         return webElement.getText();
     }
+
 }
 
