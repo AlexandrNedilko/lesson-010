@@ -2,15 +2,16 @@
 
 package secondhand.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 
 public class MainPage {
     private WebDriver driver;
@@ -79,55 +80,51 @@ public class MainPage {
         return this;
     }
 
-    /*@FindBy(xpath = "//*[@id='cart_quantity_up_2_7_0_0']/span/i")
+    @FindBy(xpath = "//*[@id='cart_quantity_up_2_7_0_0']/span/i")
     private WebElement tProceedtoPlus;
 
     public MainPage plusClick() {
         tProceedtoPlus.click();
         return this;
-    }*/
+    }
 
     @FindBy(xpath = "//*[@id='total_product']")
     private WebElement tTotalProducts;
 
-    public MainPage pTotalProducts() {
-        tTotalProducts.click();
-        return this;
-    }
+   /* public String pTotalProducts() {
+        appearElement(tTotalProducts);
+
+        return  tTotalProducts.getText();
+    }*/
 
     @FindBy(xpath = "//*[@id='total_shipping']")
     private WebElement tTotalShipping;
 
-    public MainPage pTotalShipping() {
-        tTotalShipping.click();
-        return this;
-    }
+  /*  public String pTotalShipping() {
+        return tTotalShipping.getText();
+    }*/
 
     @FindBy(xpath = "//*[@id='total_price_without_tax']")
     private WebElement tTotalSumm;
 
-    public MainPage pTotalSumm() {
-        tTotalSumm.click();
-        return this;
-    }
-
-/*
-    @FindBy(xpath = "//*[@id='total_tax")
+   /* public String pTotalSumm() {
+        return tTotalSumm.getText();
+    }*/
+//1
+    @FindBy(xpath = "//*[@id='total_tax']")
     private WebElement tTotalTaxSumm;
 
-    public MainPage pTotalTax() {
-        tTotalTaxSumm.click();
-        return this;
-    }
-*/
+   /* public String pTotalTax() {
+        return tTotalTaxSumm.getText();
+    }*/
 
     @FindBy(xpath = "//*[@id='total_price']")
     private WebElement tTotalFinishSumm;
 
-    public MainPage pTotalFinish() {
+   /* public MainPage pTotalFinish() {
         tTotalFinishSumm.click();
         return this;
-    }
+    }*/
 
     @FindBy(xpath = "//*[@id='2_7_0_0']/i")
     private WebElement tIconTrashBasket;
@@ -137,7 +134,7 @@ public class MainPage {
         return this;
     }
 
-    /*@FindBy(xpath = "#center_column p.alert-warning")
+    @FindBy(css = "#center_column p.alert-warning")
     private WebElement tIconTrashBasketEmpty;
 
     public MainPage pIconTrashEmpty() {
@@ -147,7 +144,7 @@ public class MainPage {
 
     public boolean isPresent(By isRegister) {
         return this.driver.findElement(isRegister).isEnabled();
-    }*/
+    }
 
 
 
@@ -215,6 +212,32 @@ public class MainPage {
         search.click();
         getListView.click();
 
+    }
+
+    public void appearElement( final WebElement element){
+        Wait wait = new WebDriverWait(this.driver, 25)
+                .ignoring(NoSuchElementException.class);
+        wait.until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver driver) {
+                //System.out.println("apply wait "+element.getText() );
+                return element.getText().equals("$54.00");
+            }
+            public String toString() {      return null;            }
+        });
+    }
+
+    public List getAllTotals(List actual) {
+        appearElement(tTotalProducts);
+        actual.add(getSummary(tTotalProducts));
+        actual.add(getSummary(tTotalShipping));
+        actual.add(getSummary(tTotalSumm));
+        actual.add(getSummary(tTotalTaxSumm));
+        actual.add(getSummary(tTotalFinishSumm));
+        return actual;
+    }
+
+    private String getSummary(WebElement webElement) {
+        return webElement.getText();
     }
 }
 
