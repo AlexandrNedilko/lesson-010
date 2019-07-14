@@ -63,80 +63,80 @@ public class MainPage {
 
     @FindBy(id = "layered_id_attribute_group_3")
     private WebElement sizeLcheckbox;
-//////////////////////////////////////////////////////
+
+//==========******myFirstPattern******==========//
 
     @FindBy(xpath = "//*[@id='center_column']/ul/li/div/div/div[3]/div/div[2]/a[1]/span")
     private WebElement tShirtCart;
+
+    @FindBy(xpath = "//*[@id='layer_cart']/div[1]/div[2]/div[4]/a/span")
+    private WebElement tProceedtoCheckout;
+
+    @FindBy(xpath = "//*[@id='cart_quantity_up_2_7_0_0']/span/i")
+    private WebElement tProceedtoPlus;
+
+    @FindBy(xpath = "//*[@id='total_product']")
+    private WebElement tTotalProducts;
+
+    @FindBy(xpath = "//*[@id='total_shipping']")
+    private WebElement tTotalShipping;
+
+    @FindBy(xpath = "//*[@id='total_price_without_tax']")
+    private WebElement tTotalSumm;
+
+    @FindBy(xpath = "//*[@id='total_tax']")
+    private WebElement tTotalTaxSumm;
+
+    @FindBy(xpath = "//*[@id='total_price']")
+    private WebElement tTotalFinishSumm;
+
+    @FindBy(xpath = "//*[@id='2_7_0_0']/i")
+    private WebElement tIconTrashBasket;
+
+    @FindBy(css = "#center_column p.alert-warning")
+    private WebElement tIconTrashBasketEmpty;
 
     public MainPage addCartClick() {
         tShirtCart.click();
         return this;
     }
 
-    @FindBy(xpath = "//*[@id='layer_cart']/div[1]/div[2]/div[4]/a/span")
-    private WebElement tProceedtoCheckout;
-
     public MainPage proceedtoCheckoutClick() {
         tProceedtoCheckout.click();
         return this;
     }
-
-    @FindBy(xpath = "//*[@id='cart_quantity_up_2_7_0_0']/span/i")
-    private WebElement tProceedtoPlus;
 
     public MainPage plusClick() {
         tProceedtoPlus.click();
         return this;
     }
 
-    @FindBy(xpath = "//*[@id='total_product']")
-    private WebElement tTotalProducts;
-
-   /* public String pTotalProducts() {
-        appearElement(tTotalProducts);
-
+    /*public String pTotalProducts() {
+          appearElement(tTotalProducts);
         return  tTotalProducts.getText();
-    }*/
+    }
 
-    @FindBy(xpath = "//*[@id='total_shipping']")
-    private WebElement tTotalShipping;
-
-  /*  public String pTotalShipping() {
+    public String pTotalShipping() {
         return tTotalShipping.getText();
-    }*/
+    }
 
-    @FindBy(xpath = "//*[@id='total_price_without_tax']")
-    private WebElement tTotalSumm;
-
-   /* public String pTotalSumm() {
+    public String pTotalSumm() {
         return tTotalSumm.getText();
-    }*/
-//1
-    @FindBy(xpath = "//*[@id='total_tax']")
-    private WebElement tTotalTaxSumm;
+    }
 
-   /* public String pTotalTax() {
+    public String pTotalTax() {
         return tTotalTaxSumm.getText();
-    }*/
+    }
 
-    @FindBy(xpath = "//*[@id='total_price']")
-    private WebElement tTotalFinishSumm;
-
-   /* public MainPage pTotalFinish() {
+    public MainPage pTotalFinish() {
         tTotalFinishSumm.click();
         return this;
     }*/
-
-    @FindBy(xpath = "//*[@id='2_7_0_0']/i")
-    private WebElement tIconTrashBasket;
 
     public MainPage pIconTrash() {
         tIconTrashBasket.click();
         return this;
     }
-
-    @FindBy(css = "#center_column p.alert-warning")
-    private WebElement tIconTrashBasketEmpty;
 
     public String pIconTrashEmpty() {
         return tIconTrashBasketEmpty.getText();
@@ -146,10 +146,7 @@ public class MainPage {
         return this.driver.findElement(isRegister).isEnabled();
     }
 
-
-
-
-
+//END//
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
@@ -201,6 +198,7 @@ public class MainPage {
                         xpath(TITLE_PROCEED_TO_CHECKOUT))).click();
     }
 
+    //my sequel myFirstPattern//
     public String getTotalPrice(){
         return totalSum.getText();
     }

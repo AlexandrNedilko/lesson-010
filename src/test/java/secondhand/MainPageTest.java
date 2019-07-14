@@ -3,11 +3,8 @@ package secondhand;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import secondhand.pages.MainPage;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MainPageTest extends BaseTest {
@@ -19,8 +16,7 @@ public class MainPageTest extends BaseTest {
             mainPage = new MainPage(driver);
         }
 
-
-        @Test
+        /*@Test
         public void canCheckTotalPriceForTShirt(){
             mainPage.clickTShirtTab();
             mainPage.scrollToItem();
@@ -32,15 +28,16 @@ public class MainPageTest extends BaseTest {
             String expectedResult = "$18.51";
 
             Assert.assertEquals("If test failed then total price was changed", expectedResult, actualResult);
-        }
+        }*/
+
         @Test
-    public void myFirstPattern() {
+         public void myFirstPattern() {
 
             mainPage.enterSomeBody_andClick("Blouse");
             mainPage.addCartClick(); //Add to cart
             mainPage.proceedtoCheckoutClick(); //Proceed to checkout
             mainPage.plusClick(); //click Plus
-//
+
             List <String> expected = new ArrayList<String>();
             String expected_pTotalProducts= "$54.00";
             String expected_pTotalShipping= "$2.00";
@@ -58,7 +55,6 @@ public class MainPageTest extends BaseTest {
             List <String> actual = new ArrayList<String>();
             actual= (mainPage.getAllTotals(actual));
             Assert.assertEquals(expected, actual);
-
         }
     }
 

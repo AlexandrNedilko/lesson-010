@@ -1,11 +1,9 @@
 package secondhand;
 
-import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import secondhand.utils.Config;
-
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
