@@ -56,5 +56,13 @@ public class MainPageTest extends BaseTest {
             actual= (mainPage.getAllTotals(actual));
             Assert.assertEquals(expected, actual);
         }
+
+      /*  @Test
+    public void testFireFox() {
+            //
+            mainPage.enterSomeBody_andClick("Blouse");
+            mainPage.addCartClick(); //Add to cart
+        }*/
+
     }
 
